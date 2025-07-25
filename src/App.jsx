@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Payment from './pages/Payment';
 
 // Assuming your original landing site is in Hero.jsx, About.jsx, etc.
 import Navbar from './components/Navbar';
@@ -46,6 +47,7 @@ export default function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+     <Route path="/payment" element={<Payment />} />
     </Routes>
   );
 }

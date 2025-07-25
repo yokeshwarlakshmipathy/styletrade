@@ -1,61 +1,45 @@
 // File: src/components/Testimonials.jsx
 import React from 'react';
-import { Star } from 'lucide-react';
-
-const testimonials = [
-  {
-    name: 'Aarav M.',
-    role: 'Engineering Student',
-    feedback:
-      'This platform gave me the confidence to learn trading while also helping me improve my fashion sense for interviews!',
-  },
-  {
-    name: 'Divya S.',
-    role: 'Working Professional',
-    feedback:
-      'Balancing my job and learning was tough until I joined StyleTrade. The fashion tips are an awesome bonus!'
-  },
-  {
-    name: 'Rahul K.',
-    role: 'Job Seeker',
-    feedback:
-      'Combining finance with styling is genius! I cracked my dream job looking confident and smart. Thanks DP!',
-  },
-];
 
 export default function Testimonials() {
   return (
-    <section
-      id="testimonials"
-      className="bg-black text-white py-20 px-4 md:px-10 lg:px-20 relative"
-    >
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-pink-400 mb-2">
-          What Our Users Say 💬
-        </h2>
-        <p className="text-gray-300 max-w-xl mx-auto">
-          Real feedback from our passionate learners who leveled up in both finance & fashion.
+    <section id="testimonials" className="bg-black text-white py-24 px-4">
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-yellow-400">What Our Learners Say</h2>
+        <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
+          Hear from some of our early students who’ve transformed their mindset and market skills with StyleTrade.
         </p>
-      </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl text-center"
-          >
-            <div className="flex justify-center mb-4">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" />
-              ))}
-            </div>
-            <p className="text-sm text-gray-200 italic mb-4">"{testimonial.feedback}"</p>
-            <h3 className="text-lg font-semibold text-white">{testimonial.name}</h3>
-            <p className="text-sm text-pink-400">{testimonial.role}</p>
+        <div className="grid md:grid-cols-2 gap-8 text-left">
+          <div className="bg-white/5 p-6 rounded-xl border border-white/10 shadow">
+            <p className="text-gray-100 mb-4 italic">
+              “I joined as a complete beginner. StyleTrade’s hands-on approach made charts and candlesticks click for me. I now do intraday confidently.”
+            </p>
+            <span className="text-green-400 font-semibold">— Karthik R, B.Com Graduate</span>
           </div>
-        ))}
+
+          <div className="bg-white/5 p-6 rounded-xl border border-white/10 shadow">
+            <p className="text-gray-100 mb-4 italic">
+              “From zero to real profits. The modules on psychology and risk management saved me from overtrading. Highly recommend to all fresh traders.”
+            </p>
+            <span className="text-pink-400 font-semibold">— Priya M, Aspiring Trader</span>
+          </div>
+
+          <div className="bg-white/5 p-6 rounded-xl border border-white/10 shadow">
+            <p className="text-gray-100 mb-4 italic">
+              “The way they explained price action and live setups helped me shift from theory to practice. Love the community too.”
+            </p>
+            <span className="text-blue-400 font-semibold">— Arun V, Software Engineer</span>
+          </div>
+
+          <div className="bg-white/5 p-6 rounded-xl border border-white/10 shadow">
+            <p className="text-gray-100 mb-4 italic">
+              “Before this I only lost money. Now I follow strategy, have proper stop loss, and plan entries. Game-changer!”
+            </p>
+            <span className="text-yellow-300 font-semibold">— Meena S, Homemaker turned Trader</span>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-

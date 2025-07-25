@@ -1,78 +1,65 @@
 // File: src/components/Pricing.jsx
 import React from 'react';
 
-const plans = [
-  {
-    title: 'Starter',
-    price: '₹999',
-    features: [
-      'Trading Basics',
-      'Fashion Fundamentals',
-      'Limited Community Access',
-    ],
-    highlight: false,
-  },
-  {
-    title: 'Pro Combo',
-    price: '₹2499',
-    features: [
-      'Trading + Fashion Mastery',
-      '1-on-1 Mentorship',
-      'Exclusive Content & Tools',
-      'Private Community Access',
-    ],
-    highlight: true,
-  },
-  {
-    title: 'Elite Pack',
-    price: '₹4999',
-    features: [
-      'Everything in Pro',
-      'Live Portfolio Review',
-      'Job Assistance & Resume Building',
-      'Personal Branding Guidance',
-    ],
-    highlight: false,
-  },
-];
-
 export default function Pricing() {
   return (
-    <section
-      id="pricing"
-      className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-4"
-    >
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Flexible Pricing</h2>
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-          Choose a plan that fits your learning and career goals.
+    <section id="pricing" className="bg-gray-950 text-white py-24 px-4">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-indigo-400">Choose Your Plan</h2>
+        <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
+          Whether you're just starting or ready to level up your trading game — we’ve got a plan for you.
         </p>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {plans.map((plan, index) => (
-          <div
-            key={index}
-            className={`p-8 rounded-3xl shadow-xl border border-white/10 backdrop-blur-xl bg-white/5 flex flex-col justify-between transition transform hover:scale-105 ${
-              plan.highlight ? 'border-pink-400 shadow-pink-500/20' : ''
-            }`}
-          >
-            <h3 className="text-xl font-bold text-pink-400 mb-2">{plan.title}</h3>
-            <p className="text-3xl font-extrabold text-white mb-4">{plan.price}</p>
-            <ul className="space-y-2 text-sm text-gray-300 mb-6">
-              {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-green-400">✔</span>
-                  {feature}
-                </li>
-              ))}
+        <div className="grid gap-8 md:grid-cols-3">
+          {/* Starter Plan */}
+          <div className="bg-white/5 p-8 rounded-xl border border-white/10 hover:scale-105 transition">
+            <h3 className="text-xl font-bold text-green-400 mb-2">Beginner Trader</h3>
+            <p className="text-3xl font-bold mb-4">₹799</p>
+            <ul className="text-sm text-gray-300 space-y-2 mb-6 text-left">
+              <li>✔ Stock Market Basics</li>
+              <li>✔ Introduction to Chart Reading</li>
+              <li>✔ 5+ Video Lessons</li>
+              <li>✔ Community Access</li>
             </ul>
-            <button className="mt-auto px-6 py-3 bg-pink-500 hover:bg-pink-600 rounded-xl text-white font-semibold transition">
-              Choose Plan
+            <button className="bg-green-600 hover:bg-green-700 w-full py-2 rounded text-white font-semibold transition">
+              Enroll Now
             </button>
           </div>
-        ))}
+
+          {/* Pro Plan */}
+          <div className="bg-white/10 p-8 rounded-xl border-2 border-yellow-400 shadow-lg scale-105">
+            <h3 className="text-xl font-bold text-yellow-400 mb-2">Pro Trader</h3>
+            <p className="text-3xl font-bold mb-4">₹1,999</p>
+            <ul className="text-sm text-gray-300 space-y-2 mb-6 text-left">
+              <li>✔ Everything in Beginner</li>
+              <li>✔ Technical + Fundamental Analysis</li>
+              <li>✔ Live Trade Reviews</li>
+              <li>✔ Entry-Exit-Stop Strategy</li>
+              <li>✔ Dedicated Telegram Support</li>
+            </ul>
+            <button className="bg-yellow-500 hover:bg-yellow-600 w-full py-2 rounded text-black font-semibold transition">
+              Enroll Now
+            </button>
+          </div>
+
+          {/* Elite Plan */}
+          <div className="bg-white/5 p-8 rounded-xl border border-white/10 hover:scale-105 transition">
+            <h3 className="text-xl font-bold text-pink-400 mb-2">Elite Mentorship</h3>
+            <p className="text-3xl font-bold mb-4">₹4,999</p>
+            <ul className="text-sm text-gray-300 space-y-2 mb-6 text-left">
+              <li>✔ Everything in Pro</li>
+              <li>✔ 1:1 Mentorship Sessions</li>
+              <li>✔ Advanced Strategies & Risk Control</li>
+              <li>✔ Weekly Market Outlook</li>
+              <li>✔ Lifetime Access + Updates</li>
+            </ul>
+            <button className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded text-white font-semibold transition">
+              Enroll Now
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+

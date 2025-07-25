@@ -1,3 +1,4 @@
+// File: src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -8,11 +9,8 @@ const navLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'Learn', href: '#learn' },
-  { label: 'Demo', href: '#demo' },
-  { label: 'Why Us', href: '#whyus' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Contact', href: '#contact' }
 ];
 
 export default function Navbar() {
@@ -34,13 +32,10 @@ export default function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-900 via-black to-indigo-900 backdrop-blur-md shadow-lg py-6 px-6 md:px-20 flex items-center justify-between border-b border-white/10"
+      className="fixed top-0 left-0 right-0 z-50 bg-black backdrop-blur-md shadow-lg py-5 px-6 md:px-20 flex items-center justify-between border-b border-white/10"
     >
-      <a
-        href="#hero"
-        className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-300 to-pink-300"
-      >
-        DP <span className="text-pink-400 font-semibold">| StyleTrade</span>
+      <a href="#hero" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-white to-blue-500">
+        StyleTrade
       </a>
 
       <div className="hidden md:flex gap-6 items-center">
@@ -48,16 +43,15 @@ export default function Navbar() {
           <a
             key={i}
             href={link.href}
-            className="text-gray-100 hover:text-pink-400 font-medium transition duration-200"
+            className="text-gray-100 hover:text-blue-400 font-medium transition"
           >
             {link.label}
           </a>
         ))}
-
         {currentUser ? (
           <button
             onClick={handleLogout}
-            className="ml-4 px-4 py-2 bg-pink-600 text-white rounded hover:bg-pink-700 transition"
+            className="ml-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
           >
             Logout
           </button>
@@ -65,13 +59,13 @@ export default function Navbar() {
           <div className="flex gap-3 ml-4">
             <a
               href="/login"
-              className="text-sm px-4 py-2 border border-pink-400 text-pink-400 rounded hover:bg-pink-400 hover:text-white transition"
+              className="text-sm px-4 py-2 border border-blue-400 text-blue-400 rounded hover:bg-blue-500 hover:text-white transition"
             >
               Login
             </a>
             <a
               href="/register"
-              className="text-sm px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600 transition"
+              className="text-sm px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
             >
               Register
             </a>
@@ -79,21 +73,21 @@ export default function Navbar() {
         )}
       </div>
 
+      {/* Mobile Menu */}
       <div className="md:hidden">
         <button onClick={() => setOpen(!open)}>
-          {open ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
+          {open ? <X className="text-white" /> : <Menu className="text-white" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {open && (
-        <div className="absolute top-20 left-0 right-0 bg-black/80 backdrop-blur-lg shadow-md px-6 py-4 flex flex-col gap-4 md:hidden">
+        <div className="absolute top-20 left-0 right-0 bg-black/90 px-6 py-4 flex flex-col gap-4 md:hidden">
           {navLinks.map((link, i) => (
             <a
               key={i}
               href={link.href}
-              className="text-gray-100 hover:text-pink-400 font-medium"
               onClick={() => setOpen(false)}
+              className="text-gray-100 hover:text-blue-400"
             >
               {link.label}
             </a>
@@ -104,7 +98,7 @@ export default function Navbar() {
                 handleLogout();
                 setOpen(false);
               }}
-              className="mt-2 px-4 py-2 bg-pink-600 text-white rounded hover:bg-pink-700 transition"
+              className="mt-2 px-4 py-2 bg-red-600 text-white rounded"
             >
               Logout
             </button>
@@ -112,14 +106,14 @@ export default function Navbar() {
             <>
               <a
                 href="/login"
-                className="text-sm px-4 py-2 border border-pink-400 text-pink-400 rounded hover:bg-pink-400 hover:text-white transition"
+                className="px-4 py-2 border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-white"
                 onClick={() => setOpen(false)}
               >
                 Login
               </a>
               <a
                 href="/register"
-                className="text-sm px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600 transition"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                 onClick={() => setOpen(false)}
               >
                 Register
@@ -131,4 +125,3 @@ export default function Navbar() {
     </motion.nav>
   );
 }
-

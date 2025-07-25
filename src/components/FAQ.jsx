@@ -1,49 +1,59 @@
-// File: src/sections/FAQ.jsx
-import React from 'react';
-import { Accordion, AccordionItem } from '@szhsin/react-accordion';
-import '@szhsin/react-accordion/dist/index.css';
+// File: src/components/FAQ.jsx
+import React, { useState } from 'react';
 
 const faqs = [
   {
-    question: 'What is StyleTrade?',
-    answer: 'StyleTrade is a unique platform that combines trading education with fashion insights to help students, professionals, and job seekers grow in both domains.'
+    question: 'Do I need any prior experience to join?',
+    answer: 'No prior experience is needed. Our course starts with absolute basics and gradually moves to advanced strategies.',
   },
   {
-    question: 'Do I need any prior experience in trading or fashion?',
-    answer: 'No, our curriculum is beginner-friendly and designed for learners with zero experience.'
+    question: 'What type of trading do you teach?',
+    answer: 'We cover intraday trading, swing trading, and positional trading using technical and fundamental analysis.',
   },
   {
-    question: 'What is included in the Pro Combo plan?',
-    answer: 'The Pro Combo includes full access to our trading and fashion courses, 1-on-1 mentorship, and lifetime access to community resources.'
+    question: 'Is this a recorded or live program?',
+    answer: 'Currently, we provide structured recorded modules with planned live Q&A sessions and doubt clearing in future batches.',
   },
   {
-    question: 'How can I enroll in the course?',
-    answer: 'You can enroll by clicking the "Enroll Now" button on the homepage or the pricing section after registering or logging in.'
+    question: 'Will I get personal mentorship?',
+    answer: 'Yes. Our mentorship plans include one-on-one sessions for advanced learners and serious traders.',
   },
   {
-    question: 'Can I access the content on mobile?',
-    answer: 'Yes, our platform is fully responsive and accessible across all devices.'
-  }
+    question: 'What’s the duration of the course?',
+    answer: 'The course is self-paced, but ideally takes 4–6 weeks to complete with practice.',
+  },
 ];
 
 export default function FAQ() {
-  return (
-    <section id="faq" className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-6 md:px-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">❓ Frequently Asked Questions</h2>
+  const [openIndex, setOpenIndex] = useState(null);
 
-      <Accordion transition transitionTimeout={250} className="space-y-4 max-w-3xl mx-auto">
-        {faqs.map((faq, index) => (
-          <AccordionItem
-            key={index}
-            header={<div className="font-medium text-lg text-white">{faq.question}</div>}
-            className="bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10"
-            buttonProps={{ className: 'focus:outline-none w-full text-left' }}
-            contentProps={{ className: 'text-sm text-gray-300 mt-2' }}
-          >
-            {faq.answer}
-          </AccordionItem>
-        ))}
-      </Accordion>
+  const toggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section id="faq" className="bg-gray-900 text-white py-20 px-4">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-yellow-400">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+              <button
+                onClick={() => toggle(index)}
+                className="w-full text-left px-6 py-4 focus:outline-none flex justify-between items-center"
+              >
+                <span className="font-medium text-lg">{faq.question}</span>
+                <span className="text-gray-400">{openIndex === index ? '-' : '+'}</span>
+              </button>
+              {openIndex === index && (
+                <div className="px-6 pb-4 text-gray-300">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

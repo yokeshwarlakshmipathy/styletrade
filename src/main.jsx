@@ -12,6 +12,8 @@ import Dashboard from './pages/Dashboard.jsx';
 
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import Contact from './pages/Contact.jsx';
+import Terms from './pages/Terms.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -21,6 +23,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/" element={<App />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
 
           {/* 🔐 Protected Routes */}
           <Route
