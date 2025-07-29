@@ -117,10 +117,7 @@ export default function Hero() {
         <p className="text-gray-300">Join our early access batch and transform your trading game.</p>
       </div>
 
-      {/* Footer */}
-      <footer className="w-full text-center mt-24 text-sm text-gray-500 border-t border-white/10 pt-4">
-        © 2025 StyleTrade. Empowering Traders with Discipline & Strategy.
-      </footer>
+     
     </section>
   );
 }

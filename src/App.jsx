@@ -17,7 +17,7 @@ import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import CTA from './components/CTA';
-import Enroll from './components/Enroll';
+import EnrollPage from './components/Enroll';
 import Footer from './components/Footer';
 
 function LandingPage() {
@@ -34,7 +34,7 @@ function LandingPage() {
         <Pricing />
         <FAQ />
         <CTA />
-        <Enroll />
+        <EnrollPage />
       </main>
       <Footer />
     </>
@@ -47,7 +47,9 @@ export default function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/learn" element={<Learn />} />
      <Route path="/payment" element={<Payment />} />
+     <Route path="/enroll" element={<EnrollPage />} />
     </Routes>
   );
 }

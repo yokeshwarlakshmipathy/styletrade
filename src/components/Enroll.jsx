@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-export default function Enroll() {
+export default function EnrollPage() {
   const navigate = useNavigate();
 
   const handleEnroll = () => {
