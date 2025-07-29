@@ -52,6 +52,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             }
           />
         </Routes>
+        <Routes>
+  {/* ...other routes */}
+  <Route path="/enroll" element={<EnrollPage />} />
+</Routes>
+
       </AuthProvider>
     </Router>
   </React.StrictMode>
