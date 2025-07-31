@@ -2,13 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-export default function EnrollPage() {
+export default function Enroll() {  // 🔁 Name must match import
   const navigate = useNavigate();
 
   const handleEnroll = () => {
-    navigate('/register');
+    navigate('/enrollform');
   };
-
   return (
     <section id="enroll" className="bg-gradient-to-br from-black via-gray-900 to-black text-white py-24 px-6">
       <motion.div

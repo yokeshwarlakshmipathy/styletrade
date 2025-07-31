@@ -1,12 +1,13 @@
-// File: src/App.jsx
+// ✅ Final App.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Contact from './pages/Contact';
+import Terms from './pages/Terms';
 import Payment from './pages/Payment';
 
-// Assuming your original landing site is in Hero.jsx, About.jsx, etc.
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -17,8 +18,9 @@ import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import CTA from './components/CTA';
-import EnrollPage from './components/Enroll';
+import Enroll from './components/Enroll';  // ✅ Match file name
 import Footer from './components/Footer';
+import EnrollForm from './components/EnrollForm';
 
 function LandingPage() {
   return (
@@ -34,7 +36,7 @@ function LandingPage() {
         <Pricing />
         <FAQ />
         <CTA />
-        <EnrollPage />
+        <Enroll /> {/* ✅ For home page preview section */}
       </main>
       <Footer />
     </>
@@ -43,13 +45,18 @@ function LandingPage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/learn" element={<Learn />} />
-     <Route path="/payment" element={<Payment />} />
-     <Route path="/enroll" element={<EnrollPage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<LandingPage/> } />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/enroll" element={<Enroll />} /> 
+        <Route path="/enrollform" element={<EnrollForm />} /> 
+        <Route path="/payment" element={<Payment />} />
+      
+      </Routes>
+    </>
   );
 }

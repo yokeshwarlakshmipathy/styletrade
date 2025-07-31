@@ -9,7 +9,7 @@ export default function Hero() {
 
   const handleEnroll = () => {
   if (currentUser) {
-    navigate('/payment'); // ✅ CHANGE THIS LINE from '/enroll' to '/payment'
+    navigate('/enroll'); // ✅ CHANGE THIS LINE from '/enroll' to '/payment'
   } else {
     navigate('/login');
   }

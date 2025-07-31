@@ -1,5 +1,6 @@
 // File: src/components/Pricing.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Pricing() {
   return (
@@ -21,9 +22,9 @@ export default function Pricing() {
               <li>✔ 5+ Video Lessons</li>
               <li>✔ Community Access</li>
             </ul>
-            <button className="bg-green-600 hover:bg-green-700 w-full py-2 rounded text-white font-semibold transition">
+            <Link to="payment" className="bg-green-600 hover:bg-green-700 w-full py-2 rounded text-white font-semibold transition">
               Enroll Now
-            </button>
+            </Link>
           </div>
 
           {/* Pro Plan */}
@@ -37,9 +38,9 @@ export default function Pricing() {
               <li>✔ Entry-Exit-Stop Strategy</li>
               <li>✔ Dedicated Telegram Support</li>
             </ul>
-            <button className="bg-yellow-500 hover:bg-yellow-600 w-full py-2 rounded text-black font-semibold transition">
+            <Link to="payment" className="bg-yellow-500 hover:bg-yellow-600 w-full py-2 rounded text-black font-semibold transition">
               Enroll Now
-            </button>
+            </Link>
           </div>
 
           {/* Elite Plan */}
@@ -53,9 +54,9 @@ export default function Pricing() {
               <li>✔ Weekly Market Outlook</li>
               <li>✔ Lifetime Access + Updates</li>
             </ul>
-            <button className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded text-white font-semibold transition">
+            <Link to="payment" className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded text-white font-semibold transition">
               Enroll Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

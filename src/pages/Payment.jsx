@@ -1,4 +1,3 @@
-// File: src/pages/Payment.jsx
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
