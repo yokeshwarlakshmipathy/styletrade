@@ -1,43 +1,43 @@
 // File: src/components/WhyUs.jsx
 import React from 'react';
-import { FaGraduationCap, FaUsers, FaGlobe, FaRocket } from 'react-icons/fa';
+import { FaChartLine, FaUserTie, FaUsers, FaBookOpen } from 'react-icons/fa';
 
 export default function WhyUs() {
   const features = [
     {
-      icon: <FaGraduationCap className="text-pink-400 text-4xl mb-2" />,
-      title: 'Dual Career Focus',
+      icon: <FaChartLine className="text-green-400 text-4xl mb-2" />,
+      title: 'Market-Focused Learning',
       description:
-        'Our unique blend of Trading + Fashion prepares you for success in both career paths.',
+        'Master trading skills with real chart examples, live market insights, and actionable strategies.',
     },
     {
-      icon: <FaUsers className="text-purple-400 text-4xl mb-2" />,
-      title: 'Mentor Support',
+      icon: <FaUserTie className="text-purple-400 text-4xl mb-2" />,
+      title: '1-on-1 Mentorship',
       description:
-        'Get guidance from industry professionals and personalized mentorship.',
+        'Receive personal guidance from experienced traders to sharpen your discipline and decision-making.',
     },
     {
-      icon: <FaGlobe className="text-blue-400 text-4xl mb-2" />,
-      title: 'Strong Community',
+      icon: <FaUsers className="text-blue-400 text-4xl mb-2" />,
+      title: 'Supportive Trading Community',
       description:
-        'Join a growing network of learners, creators, and professionals.',
+        'Join a powerful network of aspiring and experienced traders sharing tips, ideas, and progress.',
     },
     {
-      icon: <FaRocket className="text-yellow-400 text-4xl mb-2" />,
-      title: 'Real-World Learning',
+      icon: <FaBookOpen className="text-yellow-400 text-4xl mb-2" />,
+      title: 'Practical Curriculum',
       description:
-        'Hands-on curriculum with practical projects that reflect real market demands.',
+        'Hands-on learning modules focused on price action, psychology, and risk management.',
     },
   ];
 
   return (
     <section id="whyus" className="py-20 bg-black text-white px-6 md:px-20">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold text-pink-400 mb-4">
+        <h2 className="text-3xl md:text-5xl font-bold text-green-400 mb-4">
           Why Choose DP Trading?
         </h2>
         <p className="text-gray-400 text-md md:text-lg max-w-2xl mx-auto">
-          Discover what makes us different and why learners trust our platform to launch dual careers.
+          Discover why aspiring traders trust DP Trading to transform their skills and mindset.
         </p>
       </div>
 
