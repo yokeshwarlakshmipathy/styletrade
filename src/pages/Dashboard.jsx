@@ -12,10 +12,13 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   const handleLogout = async () => {
+    
     try {
+    console.log("Logout");
+
       await logout();
       toast.success("Logged out!");
-      navigate('/login');
+      navigate('/');
     } catch (err) {
       console.error("Logout Error:", err);
     }

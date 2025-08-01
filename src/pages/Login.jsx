@@ -1,7 +1,7 @@
 // File: src/pages/Login.jsx
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 
@@ -11,6 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const location = useLocation(); // 👈 Access navigation state
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -18,8 +19,12 @@ export default function Login() {
 
     try {
       await login(email, password);
-toast.success("Login successful!");
-navigate('/dashboard');
+      const redirectPath = location.state?.from || '/'; // 👈 Default to home if no previous path
+      navigate(redirectPath);
+      // console.log('Login success')
+      // navigate('/');
+      // toast.success("Login successful!");
+      
 
     } catch (err) {
       console.error("Login Error:", err);

@@ -11,7 +11,7 @@ export default function Hero() {
     if (currentUser) {
       navigate('/payment');
     } else {
-      navigate('/login');
+      navigate('/login', { state: { from: '/payment' } });
     }
   };
 
