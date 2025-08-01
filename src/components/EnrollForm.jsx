@@ -1,74 +1,85 @@
+// File: src/components/EnrollForm.jsx
 import React, { useState } from 'react';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 export default function EnrollForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    course: '',
-  });
-  const [success, setSuccess] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [course, setCourse] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!name || !email || !course) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
     try {
-      await addDoc(collection(db, "enrollments"), formData);
-      setSuccess(true);
-      setFormData({ name: '', email: '', course: '' });
+      await addDoc(collection(db, "enrollments"), {
+        name,
+        email,
+        course,
+        createdAt: Timestamp.now()
+      });
+
+      toast.success("Enrollment submitted! 🎉");
+      navigate("/enroll-success");
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error(error);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 
   return (
-    <section id="enroll" className="bg-gray-100 py-16 px-4">
-      <div className="max-w-xl mx-auto bg-white p-8 rounded-xl shadow">
-        <h2 className="text-2xl font-bold mb-6 text-center">Enroll Now</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            required
-            className="w-full border border-gray-300 p-3 rounded"
-          />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Your Email"
-            required
-            className="w-full border border-gray-300 p-3 rounded"
-          />
-          <select
-            name="course"
-            value={formData.course}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 p-3 rounded"
-          >
-            <option value="">Select Course</option>
-            <option value="Trading">Trading Essentials</option>
-            <option value="Fashion">Fashion Styling</option>
-            <option value="Combo">Combo: Trading + Fashion</option>
-          </select>
-          <button type="submit" className="bg-blue-600 text-white px-6 py-3 rounded w-full hover:bg-blue-700 transition">
-            Submit
-          </button>
-        </form>
-        {success && <p className="text-green-600 mt-4 text-center">✅ Enrolled Successfully!</p>}
-      </div>
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black text-white px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-lg w-full max-w-md space-y-6 border border-white/10"
+      >
+        <h2 className="text-3xl font-bold text-center text-green-400">Enroll Now</h2>
+
+        <input
+          type="text"
+          placeholder="Your Name"
+          className="w-full p-3 rounded-lg bg-white/20 placeholder-white/70"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          className="w-full p-3 rounded-lg bg-white/20 placeholder-white/70"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        <select
+          className="w-full p-3 rounded-lg bg-white/20 text-white"
+          value={course}
+          onChange={(e) => setCourse(e.target.value)}
+          required
+        >
+          <option value="">Select Course</option>
+          <option value="Forex Trading">Forex Trading</option>
+          <option value="Stock Market">Stock Market</option>
+          <option value="Combo">Combo</option>
+        </select>
+
+        <button
+          type="submit"
+          className="w-full bg-green-600 hover:bg-green-700 transition text-white p-3 rounded-lg font-semibold"
+        >
+          Submit Enrollment
+        </button>
+      </form>
     </section>
   );
 }

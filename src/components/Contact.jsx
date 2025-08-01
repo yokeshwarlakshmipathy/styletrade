@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Toaster, toast } from 'react-hot-toast';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -14,7 +15,14 @@ export default function Contact() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-16 px-6 text-gray-800">
+    <motion.div
+      id="contact"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="max-w-4xl mx-auto py-20 px-6 text-gray-800"
+    >
       <Helmet>
         <title>Contact Us | StyleTrade</title>
         <meta
@@ -25,17 +33,34 @@ export default function Contact() {
 
       <Toaster position="top-center" reverseOrder={false} />
 
-      <h1 className="text-4xl font-bold mb-4 text-center text-blue-600">Contact Us</h1>
-      <p className="text-center text-gray-600 mb-10">
-        Have a question about our trading strategies, upcoming webinars, or mentorship programs? We’re here to help!
-      </p>
+      <motion.h1
+        className="text-4xl font-bold mb-4 text-center text-blue-600"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
+        Contact Us
+      </motion.h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <form
+      <motion.p
+        className="text-center text-gray-600 mb-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        Have a question about our trading strategies, upcoming webinars, or mentorship programs? We’re here to help!
+      </motion.p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Form Section */}
+        <motion.form
           action="https://formspree.io/f/xwkgbzlr"
           method="POST"
           onSubmit={handleSubmit}
-          className="space-y-6"
+          className="space-y-6 bg-white p-6 rounded-lg shadow-lg"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
         >
           <div>
             <label htmlFor="name" className="block mb-2 font-medium">
@@ -82,9 +107,15 @@ export default function Contact() {
           >
             Send Message
           </button>
-        </form>
+        </motion.form>
 
-        <div className="space-y-6 text-sm md:text-base text-gray-700">
+        {/* Info Section */}
+        <motion.div
+          className="space-y-6 text-sm md:text-base text-gray-700 bg-white p-6 rounded-lg shadow-lg"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="flex items-start gap-4">
             <Mail className="text-blue-500" />
             <div>
@@ -118,14 +149,19 @@ export default function Contact() {
               before sending your message.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {submitted && (
-        <p className="text-green-600 text-center text-lg mt-6">
+        <motion.p
+          className="text-green-600 text-center text-lg mt-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           🎉 Thank you for your message! We'll get back to you regarding your trading inquiry shortly.
-        </p>
+        </motion.p>
       )}
-    </div>
+    </motion.div>
   );
 }

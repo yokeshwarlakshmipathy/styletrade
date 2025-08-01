@@ -1,38 +1,62 @@
+// File: src/components/Enroll.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { GraduationCap, LineChart, Clock } from 'lucide-react';
 
-export default function Enroll() {  // 🔁 Name must match import
+export default function Enroll() {
   const navigate = useNavigate();
 
   const handleEnroll = () => {
     navigate('/enrollform');
   };
+
   return (
-    <section id="enroll" className="bg-gradient-to-br from-black via-gray-900 to-black text-white py-24 px-6">
+    <section
+      id="enroll"
+      className="relative bg-gradient-to-br from-black via-gray-900 to-black text-white py-28 px-6 overflow-hidden"
+    >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         className="max-w-5xl mx-auto text-center"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-400">
+        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 text-green-400">
           Ready to Start Trading?
         </h2>
-        <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+
+        <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
           Whether you're new or stuck in the learning loop, our hands-on training and expert-backed system will help you trade confidently and consistently.
         </p>
 
-        <div className="bg-white/5 border border-white/10 p-6 rounded-xl max-w-xl mx-auto space-y-4">
-          <p className="text-gray-100">🔥 4-Week Beginner-to-Confident Trader Bootcamp</p>
-          <p className="text-yellow-400 font-semibold">📈 Includes strategy videos, trading checklist & live mentorship</p>
-          <p className="text-pink-400 font-medium">⏳ Limited slots for early access bonus (Telegram support + Free templates)</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+          <div className="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md">
+            <GraduationCap className="text-green-400 w-8 h-8 mx-auto mb-3" />
+            <p className="text-gray-100 font-semibold">
+              🔥 4-Week Beginner-to-Confident Trader Bootcamp
+            </p>
+          </div>
+
+          <div className="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md">
+            <LineChart className="text-yellow-400 w-8 h-8 mx-auto mb-3" />
+            <p className="text-yellow-400 font-semibold">
+              📈 Strategy Videos, Checklist & Live Mentorship
+            </p>
+          </div>
+
+          <div className="bg-white/5 p-5 rounded-xl border border-white/10 backdrop-blur-md">
+            <Clock className="text-pink-400 w-8 h-8 mx-auto mb-3" />
+            <p className="text-pink-400 font-medium">
+              ⏳ Early Access Bonus: Telegram + Free Templates
+            </p>
+          </div>
         </div>
 
         <button
           onClick={handleEnroll}
-          className="mt-10 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg font-semibold transition"
+          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-xl transition-all duration-300"
         >
           Enroll Now — Start Learning
         </button>
@@ -41,6 +65,10 @@ export default function Enroll() {  // 🔁 Name must match import
           No prior experience needed. Just your time and commitment. Let’s go!
         </p>
       </motion.div>
+
+      {/* Animated background accents */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-green-600 rounded-full opacity-20 animate-ping"></div>
+      <div className="absolute bottom-10 right-10 w-24 h-24 bg-pink-600 rounded-full opacity-20 animate-pulse"></div>
     </section>
   );
 }

@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 
 export default function Login() {
   const { login } = useAuth();
@@ -16,10 +18,13 @@ export default function Login() {
 
     try {
       await login(email, password);
-      navigate('/dashboard'); // ✅ Redirect after login
+toast.success("Login successful!");
+navigate('/dashboard');
+
     } catch (err) {
       console.error("Login Error:", err);
-      setError('Invalid email or password. Please try again.');
+      toast.error('Invalid email or password. Please try again.');
+
     }
   };
 

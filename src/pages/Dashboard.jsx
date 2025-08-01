@@ -1,20 +1,51 @@
-// File: src/pages/Dashboard.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+import toast from 'react-hot-toast';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [course, setCourse] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const handleLogout = async () => {
     try {
       await logout();
+      toast.success("Logged out!");
       navigate('/login');
     } catch (err) {
       console.error("Logout Error:", err);
     }
   };
+
+  useEffect(() => {
+    const fetchEnrollment = async () => {
+      if (!user?.email) return;
+      try {
+        const q = query(
+          collection(db, "enrollments"),
+          where("email", "==", user.email)
+        );
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          const data = querySnapshot.docs[0].data();
+          setCourse(data.course || data.plan || 'Not enrolled');
+        } else {
+          setCourse("No enrollment found");
+        }
+      } catch (error) {
+        console.error("Fetch Error:", error);
+        toast.error("Could not fetch enrollment");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEnrollment();
+  }, [user]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white flex items-center justify-center px-4">
@@ -25,6 +56,13 @@ export default function Dashboard() {
           <p className="text-lg">
             Welcome back, <span className="text-yellow-300 font-semibold">{user?.email}</span>!
           </p>
+
+          {loading ? (
+            <p className="text-gray-400">Fetching your course...</p>
+          ) : (
+            <p className="text-sm text-gray-300">🎓 Enrolled Course: <span className="text-pink-400 font-semibold">{course}</span></p>
+          )}
+
           <p className="text-gray-400 text-sm">
             You've unlocked access to premium trading modules, charting tips, and market psychology breakdowns.
           </p>
@@ -52,4 +90,3 @@ export default function Dashboard() {
     </div>
   );
 }
-

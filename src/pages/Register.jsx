@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -13,10 +15,12 @@ export default function Register() {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('Registered successfully! 🎉');
-      navigate('/login');
+      toast.success('Registered successfully! 🎉');
+      navigate('/dashboard');
+
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
+
     }
   };
 
