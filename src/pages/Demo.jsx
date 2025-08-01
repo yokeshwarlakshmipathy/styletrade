@@ -16,7 +16,7 @@ export default function Demo() {
     <div className="min-h-screen bg-gradient-to-r from-pink-800 via-purple-800 to-blue-800 text-white p-8">
       <h1 className="text-4xl font-bold mb-6">🎥 Welcome to the Demo Page</h1>
       <p className="text-lg mb-4">
-        Hello {currentUser?.email}, here you’ll experience StyleTrade's real power in action.
+        Hello {currentUser?.email}, here you’ll experience DP Trading's real power in action.
       </p>
       <button
         onClick={handleLogout}

@@ -1,4 +1,3 @@
-// File: src/components/Hero.jsx
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -10,15 +9,7 @@ export default function Hero() {
 
   const handleEnroll = () => {
     if (currentUser) {
-      navigate('/payment'); // ✅ Updated from '/enroll' to '/payment'
-    } else {
-      navigate('/login');
-    }
-  };
-
-  const handleExplore = () => {
-    if (currentUser) {
-      navigate('/learn');
+      navigate('/payment');
     } else {
       navigate('/login');
     }
@@ -43,7 +34,7 @@ export default function Hero() {
         className="z-10 text-center"
       >
         <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-xl">
-          Welcome to <span className="bg-gradient-to-r from-green-400 to-blue-500 text-transparent bg-clip-text">Our Team </span>
+          Welcome to <span className="bg-gradient-to-r from-green-400 to-blue-500 text-transparent bg-clip-text">Our Team</span>
         </h1>
         <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
           Master the art of trading with expert-led strategies, tools, and real-world insights.
@@ -71,7 +62,7 @@ export default function Hero() {
         </p>
       </motion.div>
 
-      {/* Bottom CTA Buttons */}
+      {/* CTA Buttons */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -92,12 +83,12 @@ export default function Hero() {
           >
             Enroll Now
           </button>
-          <button
-            onClick={handleExplore}
+          <a
+            href="#learn"
             className="px-6 py-3 border border-gray-300 rounded-xl text-white hover:bg-white hover:text-black transition duration-300"
           >
             Explore Courses
-          </button>
+          </a>
         </div>
       </motion.div>
 
@@ -110,7 +101,7 @@ export default function Hero() {
         id="whyus"
         className="z-10 mt-24 text-center max-w-3xl mx-auto"
       >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">Why Choose StyleTrade?</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">Why Choose DP Trading?</h2>
         <ul className="text-gray-300 space-y-2 text-sm md:text-base">
           <li>✅ Learn from experienced traders with real portfolios.</li>
           <li>✅ Practical sessions with live charts and indicators.</li>
@@ -119,30 +110,26 @@ export default function Hero() {
         </ul>
       </motion.div>
 
-      {/* Testimonials */}
+      {/* Live Feedback Prompt Instead of Testimonials */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
         viewport={{ once: true }}
-        id="testimonials"
-        className="z-10 mt-24 max-w-4xl mx-auto text-center"
+        className="z-10 mt-24 max-w-3xl mx-auto text-center"
       >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-yellow-400">What Learners Say</h2>
-        <div className="grid md:grid-cols-2 gap-6 text-left">
-          <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-            <p className="text-gray-100 mb-2">
-              "From total beginner to confident trader. StyleTrade gave me clarity and discipline."
-            </p>
-            <span className="text-green-400 font-semibold">— Karthik M, Final Year Student</span>
-          </div>
-          <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-            <p className="text-gray-100 mb-2">
-              "The strategies and psychology taught here helped me stop overtrading and grow steady."
-            </p>
-            <span className="text-blue-400 font-semibold">— Shruti R, Working Professional</span>
-          </div>
-        </div>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-yellow-400">📢 Share Your Thoughts</h2>
+        <p className="text-gray-300 mb-4">
+          We're just getting started. Be part of the journey—leave your feedback or suggestions!
+        </p>
+        <a
+  href="#feedback"
+  className="inline-block px-6 py-3 bg-yellow-500 text-black font-semibold rounded-xl hover:bg-yellow-600 transition"
+>
+  Give Feedback
+</a>
+
+
       </motion.div>
 
       {/* Enrollment CTA */}

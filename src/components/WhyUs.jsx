@@ -34,7 +34,7 @@ export default function WhyUs() {
     <section id="whyus" className="py-20 bg-black text-white px-6 md:px-20">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-5xl font-bold text-pink-400 mb-4">
-          Why Choose StyleTrade?
+          Why Choose DP Trading?
         </h2>
         <p className="text-gray-400 text-md md:text-lg max-w-2xl mx-auto">
           Discover what makes us different and why learners trust our platform to launch dual careers.

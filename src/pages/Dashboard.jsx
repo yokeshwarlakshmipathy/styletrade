@@ -76,7 +76,7 @@ export default function Dashboard() {
             onClick={() => navigate('/')}
             className="mt-4 text-white bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-700"
           >
-            Go to StyleTrade Home
+            Go to DP Trading Home
           </button>
 
           <button

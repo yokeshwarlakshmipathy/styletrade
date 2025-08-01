@@ -1,6 +1,5 @@
 // File: src/components/Contact.jsx
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useEffect, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -8,6 +7,24 @@ import { motion } from 'framer-motion';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Contact Us | DP Trading';
+
+    const metaDesc = document.querySelector("meta[name='description']");
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        'content',
+        "Reach out to the DP Trading team for trading course support, mentorship inquiries, or platform questions."
+      );
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content =
+        "Reach out to the DP Trading team for trading course support, mentorship inquiries, or platform questions.";
+      document.head.appendChild(meta);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     setSubmitted(true);
@@ -23,14 +40,6 @@ export default function Contact() {
       viewport={{ once: true }}
       className="max-w-4xl mx-auto py-20 px-6 text-gray-800"
     >
-      <Helmet>
-        <title>Contact Us | StyleTrade</title>
-        <meta
-          name="description"
-          content="Reach out to the StyleTrade team for trading course support, mentorship inquiries, or platform questions."
-        />
-      </Helmet>
-
       <Toaster position="top-center" reverseOrder={false} />
 
       <motion.h1
@@ -120,7 +129,7 @@ export default function Contact() {
             <Mail className="text-blue-500" />
             <div>
               <p className="font-semibold">Email</p>
-              <p>Sparkindustry6@gmail.com.com</p>
+              <p>Sparkindustry6@gmail.com</p>
             </div>
           </div>
 

@@ -18,7 +18,8 @@ import About from './components/About';
 import Learn from './components/Learn';
 import Demo from './components/Demo';
 import WhyUs from './components/WhyUs';
-import Testimonials from './components/Testimonials';
+import Feedback from './components/Feedback';
+
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import CTA from './components/CTA';
@@ -39,12 +40,14 @@ function LandingPage() {
         <div id="learn"><Learn /></div>
         <div id="demo"><Demo /></div>
         <div id="whyus"><WhyUs /></div>
-        <div id="testimonials"><Testimonials /></div>
+        
         <div id="pricing"><Pricing /></div>
         <div id="faq"><FAQ /></div>
         <div id="cta"><CTA /></div>
         <div id="enroll"><Enroll /></div>
         <div id="contact"><Contact /></div> {/* ✅ Anchor target */}
+        <div id="feedback"><Feedback /></div>
+
         <WhatsAppCTA />
       </main>
       <Footer />
@@ -63,6 +66,8 @@ export default function App() {
         {/* ✅ Removed "/contact" route to enable scroll behavior */}
         <Route path="/terms" element={<Terms />} />
         <Route path="/enroll" element={<Enroll />} />
+        <Route path="/feedback" element={<Feedback />} />
+
         <Route path="/enrollform" element={<EnrollForm />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/enroll-success" element={<EnrollSuccess />} />
