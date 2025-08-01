@@ -120,7 +120,7 @@ export default function Contact() {
             <Mail className="text-blue-500" />
             <div>
               <p className="font-semibold">Email</p>
-              <p>trading@styletrade.com</p>
+              <p>Sparkindustry6@gmail.com.com</p>
             </div>
           </div>
 
@@ -128,7 +128,7 @@ export default function Contact() {
             <Phone className="text-blue-500" />
             <div>
               <p className="font-semibold">Phone</p>
-              <p>+91 90000 11111</p>
+              <p>+91 8148502407</p>
             </div>
           </div>
 
