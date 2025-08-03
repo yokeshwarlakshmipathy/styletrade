@@ -34,7 +34,7 @@ function LandingPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20 space-y-24">
+      <main className="pt-2 space-y-1 bg-gray-900 text-white">
         <div id="hero"><Hero /></div>
         <div id="about"><About /></div>
         <div id="learn"><Learn /></div>
@@ -48,9 +48,10 @@ function LandingPage() {
         <div id="contact"><Contact /></div> {/* ✅ Anchor target */}
         <div id="feedback"><Feedback /></div>
 
+        <Footer />
         <WhatsAppCTA />
       </main>
-      <Footer />
+      
     </>
   );
 }
@@ -67,7 +68,7 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/enroll" element={<Enroll />} />
         <Route path="/feedback" element={<Feedback />} />
-
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/enrollform" element={<EnrollForm />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/enroll-success" element={<EnrollSuccess />} />
@@ -97,7 +98,17 @@ export default function App() {
             </PrivateRoute>
           }
         />
+          <Route
+          path="/pricing"
+          element={
+            <PrivateRoute>
+              <Pricing />
+            </PrivateRoute>
+          }
+        />
+       
       </Routes>
+      
     </>
   );
 }

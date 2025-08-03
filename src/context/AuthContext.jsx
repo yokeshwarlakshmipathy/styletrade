@@ -7,6 +7,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import Pricing from "../components/Pricing";
 
 const AuthContext = createContext();
 
@@ -43,6 +44,7 @@ export function AuthProvider({ children }) {
     register,
     login,
     logout,
+    
   };
 
   return (

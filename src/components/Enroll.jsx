@@ -1,15 +1,43 @@
 // File: src/components/Enroll.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GraduationCap, LineChart, Clock } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export default function Enroll() {
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+
+  // const navigate = useNavigate();
+  // const handleEnroll = () => {
+  //   navigate('/enrollform');
+  // };
 
   const handleEnroll = () => {
-    navigate('/enrollform');
+    if (currentUser) {
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate('/login', { state: { from: '/', scrollTo: 'pricing' } });
+    }
   };
+  
+  // 👇 Scroll to pricing if returned from login
+  useEffect(() => {
+    if (location.state?.scrollTo === 'pricing') {
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        setTimeout(() => {
+          pricingSection.scrollIntoView({ behavior: 'smooth' });
+        }, 300); // Small delay to ensure DOM is ready
+      }
+    }
+  }, [location]);
 
   return (
     <section

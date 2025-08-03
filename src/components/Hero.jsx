@@ -1,19 +1,53 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Hero() {
-  const { currentUser } = useAuth();
-  const navigate = useNavigate();
+  // const { currentUser } = useAuth();
+  // const navigate = useNavigate(); // Access navigation state
 
-  const handleEnroll = () => {
-    if (currentUser) {
-      navigate('/payment');
-    } else {
-      navigate('/login', { state: { from: '/payment' } });
+// const handleEnroll = () => {
+//   if (currentUser) {
+//     const pricingSection = document.getElementById('pricing');
+//     if (pricingSection) {
+//       pricingSection.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   } else {
+//     navigate('/login', { state: { from: '/pricing' } }); // Redirect to login, then come back to home
+//   }
+// };;
+
+// ... inside your Hero component
+const { currentUser } = useAuth();
+const navigate = useNavigate();
+const location = useLocation();
+
+const handleEnroll = () => {
+  if (currentUser) {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  } else {
+    navigate('/login', { state: { from: '/', scrollTo: 'pricing' } });
+  }
+};
+
+// 👇 Scroll to pricing if returned from login
+useEffect(() => {
+  if (location.state?.scrollTo === 'pricing') {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      setTimeout(() => {
+        pricingSection.scrollIntoView({ behavior: 'smooth' });
+      }, 300); // Small delay to ensure DOM is ready
+    }
+  }
+}, [location]);
+
+
 
   return (
     <section
@@ -92,23 +126,39 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* WHY US Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        viewport={{ once: true }}
-        id="whyus"
-        className="z-10 mt-24 text-center max-w-3xl mx-auto"
-      >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">Why Choose DP Trading?</h2>
-        <ul className="text-gray-300 space-y-2 text-sm md:text-base">
-          <li>✅ Learn from experienced traders with real portfolios.</li>
-          <li>✅ Practical sessions with live charts and indicators.</li>
-          <li>✅ Focus on discipline, strategy, and risk management.</li>
-          <li>✅ Community-driven mentorship and discussions.</li>
-        </ul>
-      </motion.div>
+     {/* WHY US Section */}
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.3 }}
+  viewport={{ once: true }}
+  id="whyus"
+  className="z-10 mt-24 text-center max-w-4xl mx-auto px-4"
+>
+  <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-green-400">
+    🚀 Why Choose DP Trading?
+  </h2>
+
+  <ul className="space-y-4 text-left text-gray-300 text-sm md:text-base">
+    <li className="flex items-start gap-3">
+      <span className="text-green-400 text-lg">✔️</span>
+      <span>Learn from experienced traders with proven track records.</span>
+    </li>
+    <li className="flex items-start gap-3">
+      <span className="text-green-400 text-lg">✔️</span>
+      <span>Hands-on practice with live charts, indicators & real-time analysis.</span>
+    </li>
+    <li className="flex items-start gap-3">
+      <span className="text-green-400 text-lg">✔️</span>
+      <span>Master strategy, discipline & risk management the right way.</span>
+    </li>
+    <li className="flex items-start gap-3">
+      <span className="text-green-400 text-lg">✔️</span>
+      <span>Engage with a powerful community of learners & mentors.</span>
+    </li>
+  </ul>
+</motion.div>
+
 
       {/* Live Feedback Prompt Instead of Testimonials */}
       <motion.div

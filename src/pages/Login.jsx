@@ -13,25 +13,50 @@ export default function Login() {
   const [error, setError] = useState('');
   const location = useLocation(); // 👈 Access navigation state
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError('');
 
-    try {
-      await login(email, password);
-      const redirectPath = location.state?.from || '/'; // 👈 Default to home if no previous path
-      navigate(redirectPath);
-      // console.log('Login success')
-      // navigate('/');
-      // toast.success("Login successful!");
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   setError('');
+
+  //   try {
+  //     await login(email, password);
+  //     const redirectPath = location.state?.from || '/'; // 👈 Default to home if no previous path
+  //     navigate(redirectPath);
+  //     // console.log('Login success')
+  //     // navigate('/');
+  //     // toast.success("Login successful!");
       
 
-    } catch (err) {
-      console.error("Login Error:", err);
-      toast.error('Invalid email or password. Please try again.');
+  //   } catch (err) {
+  //     console.error("Login Error:", err);
+  //     toast.error('Invalid email or password. Please try again.');
 
-    }
-  };
+  //   }
+  // };  
+
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  setError('');
+
+  try {
+    await login(email, password);
+
+    const redirectPath = location.state?.from || '/'; // 👈 redirect to home if not specified
+    const scrollTo = location.state?.scrollTo;         // 👈 check if there's a scrollTo instruction
+
+    // Pass scroll target state during navigation
+    navigate(redirectPath, {
+      replace: true,
+      state: scrollTo ? { scrollTo } : null,
+    });
+    
+
+  } catch (err) {
+    console.error("Login Error:", err);
+    toast.error('Invalid email or password. Please try again.');
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white px-4">
